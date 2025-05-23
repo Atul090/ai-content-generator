@@ -2,9 +2,12 @@ import React from 'react'
 import { TEMPLATE } from './TemplateListSection'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 const TemplateCard = (item:TEMPLATE) => {
   return (
+    <Link href={'/dashboard/content/'+item?.slug}>
+
     <div className='p-6 shadow-sm rounded-xl bg-white border hover:shadow-md transition-all duration-300 cursor-pointer group'>
       <div className='flex flex-col gap-4'>
         <div className='flex items-center justify-between'>
@@ -26,6 +29,7 @@ const TemplateCard = (item:TEMPLATE) => {
         </div>
       </div>
     </div>
+    </Link>
   )
 }
 
