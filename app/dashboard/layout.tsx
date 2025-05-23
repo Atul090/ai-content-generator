@@ -8,7 +8,7 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className='flex min-h-screen'>
+    <div className='flex  bg-slate-100 h-screen'>
         {/* Sidebar - hidden on mobile, fixed on desktop */}
         <div className='hidden md:block md:w-64 md:fixed md:inset-y-0'>
             <SideNav/>
