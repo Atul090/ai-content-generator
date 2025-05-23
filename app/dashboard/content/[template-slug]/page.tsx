@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import FormSection from '../_components/FormSection'
 import OutputSection from '../_components/OutputSection'
 import { TEMPLATE } from '../../_components/TemplateListSection'
@@ -8,6 +8,7 @@ import Templates from '@/app/(data)/Templates'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+import { getAiResponse } from '@/utils/AiModal'
 
 interface PROPS{
     params: {
@@ -18,9 +19,14 @@ interface PROPS{
 
 const CreateNewContent = (props:PROPS) => {
     const selectedTemplate:TEMPLATE|undefined=Templates?.find((item)=>item.slug==props.params['template-slug']);
-
-    const GenerateAIContent = (formData:any)=>{
-
+    const [loading,setLoading] = useState(false);
+    const GenerateAIContent = async (formData:any)=>{
+      setLoading(true)
+      const SelectedPrompt = selectedTemplate?.aiPrompt;
+      const FinaAIPrompt = JSON.stringify(formData)+", "+SelectedPrompt;
+      const result = await getAiResponse(FinaAIPrompt);
+      console.log(result.text)
+      setLoading(false)
     }
 
     return (
@@ -33,6 +39,7 @@ const CreateNewContent = (props:PROPS) => {
         <FormSection 
           selectedTemplate={selectedTemplate}
           userFormInput = {(v:any)=>GenerateAIContent(v)}
+          loading={loading}
         />
 
         <div className='col-span-2'>
