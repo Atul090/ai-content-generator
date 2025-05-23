@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <h2>Subscribe to X my boys</h2>
-      <Button variant={"destructive"}>click me</Button>
+      <Button >click me</Button>
     </div>
   );
 }
