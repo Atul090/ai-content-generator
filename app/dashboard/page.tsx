@@ -9,6 +9,7 @@ const Dashboard = () => {
   return (
     <div>
         {/* search section */}
+        {/* //chaeck this outline */}
         <SearchSection onSearchInput={(value:string)=>console.log(value)}/>
         {/* template lisyt section */}
         <TemplateListSection/>

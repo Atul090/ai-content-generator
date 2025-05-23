@@ -21,8 +21,8 @@ export interface FORM{
 
 const TemplateListSection = () => {
   return( 
-    <div className='p-6 bg-gray-50 min-h-screen'>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+    <div className='p-4 md:p-6 bg-gray-50'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6'>
         {Templates.map((item:TEMPLATE, index:number) => (
           <TemplateCard key={item.slug} {...item}/>
         ))}
