@@ -18,6 +18,8 @@ interface PROPS{
 
 
 const CreateNewContent = (props:PROPS) => {
+
+    const [aiOutput,setAiOutput] = useState<string>('')
     const selectedTemplate:TEMPLATE|undefined=Templates?.find((item)=>item.slug==props.params['template-slug']);
     const [loading,setLoading] = useState(false);
     const GenerateAIContent = async (formData:any)=>{
@@ -26,6 +28,7 @@ const CreateNewContent = (props:PROPS) => {
       const FinaAIPrompt = JSON.stringify(formData)+", "+SelectedPrompt;
       const result = await getAiResponse(FinaAIPrompt);
       console.log(result.text)
+      setAiOutput(result?.text || '')
       setLoading(false)
     }
 
@@ -44,7 +47,7 @@ const CreateNewContent = (props:PROPS) => {
 
         <div className='col-span-2'>
         {/* outoput section */}
-          <OutputSection/>
+          <OutputSection aiOutput={aiOutput}/>
         </div>
     </div>
     </div>
